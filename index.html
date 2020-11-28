@@ -50,7 +50,7 @@
                   document.getElementById("pic").style.marginTop=0;
                   document.getElementById("pic-text").innerHTML="the-starry-night.jpg";
                   document.getElementById("pic-text").style.marginBottom=0;' >
-        <img id="pic" class="mdui-center" style="margin-top: 10%;" src="img/upload-img.png">
+        <img id="pic" class="mdui-center mdui-img-fluid" style="margin-top: 10%;" src="img/upload-img.png">
         <p id="pic-text" class="mdui-text-center" style="margin-bottom: 10%;">选择文件</p>
       </div>
       <!--result-name改为识别的作品名
@@ -72,7 +72,12 @@
     <h2>识别结果</h2>
 
     <div class="mdui-row">
-      <div id="spinner" class="mdui-spinner" style="display: none;"></div>
+      <div id="spinner" class="mdui-row" style="display: none;">
+        <h3>识别中</h3>
+        <div class="mdui-progress">
+          <div class="mdui-progress-indeterminate"></div>
+        </div>
+      </div>
       <p id="result-name"></p>
       <p id="result-author"></p>
     </div>
