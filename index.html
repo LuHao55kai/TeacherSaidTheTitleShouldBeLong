@@ -35,63 +35,68 @@
       </div>
     </header>
 
-  <div class="mdui-container doc-container">
-    <h1 class="doc-title mdui-text-color-theme">名画识别网页小程序</h1>
-    <div class="mdui-divider"></div>
-
-    <h2>上传的图片</h2>
-    <div class="mdui-row">
-      <div class="mdui-ripple">
-        <!--pic.src改为用户上传的图片的位置
-            pic-text为用户上传的图片的名称-->
-        <input type="file" accept="image/x-png,image/jpeg" 
-        style="cursor:pointer; opacity:0; width: 100%; height: 100%; position: absolute; z-index: 9;"
-        onchange='document.getElementById("pic").src="img/the-starry-night.jpg";
-                  document.getElementById("pic").style.marginTop=0;
-                  document.getElementById("pic-text").innerHTML="the-starry-night.jpg";
-                  document.getElementById("pic-text").style.marginBottom=0;' >
-        <img id="pic" class="mdui-center mdui-img-fluid" style="margin-top: 10%;" src="img/upload-img.png">
-        <p id="pic-text" class="mdui-text-center" style="margin-bottom: 10%;">选择文件</p>
-      </div>
-      <!--result-name改为识别的作品名
-          result-name改为对应的作者-->
-      <button id="analyze-btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"
-       onclick='document.getElementById("spinner").style.display="block";
-                document.getElementById("test-show-result").style.display="block";
-                document.getElementById("result-name").innerHTML = "";
-                document.getElementById("result-author").innerHTML = "";
-                document.getElementById("analyze-btn").setAttribute("disabled", true);'>
-       识别
-      </button>
-    </div>
-    
-    <div class="mdui-row mdui-m-y-3">
+    <div class="mdui-container doc-container">
+      <!--H1 网页大标题-->
+      <h1 class="doc-title mdui-text-color-theme">名画识别网页小程序</h1>
       <div class="mdui-divider"></div>
-    </div>
-
-    <h2>识别结果</h2>
-
-    <div class="mdui-row">
-      <div id="spinner" class="mdui-row" style="display: none;">
-        <h3>识别中</h3>
+      <!--H2 用户上传图片-->
+      <div class="mdui-row">
+        <h2>上传的图片</h2>
+        <!--上传图片窗口-->
+        <div class="mdui-ripple">
+          <!--上传-->
+          <input id="input-window" type="file" accept="image/x-png,image/jpeg" 
+            onchange='
+              document.getElementById("pic").src="images/the-starry-night.jpg";
+              document.getElementById("pic").style.marginTop=0;
+              document.getElementById("pic-text").innerHTML="the-starry-night.jpg";
+              document.getElementById("pic-text").style.marginBottom=0;
+            '
+            style="cursor:pointer; opacity:0; width: 100%; height: 100%; position: absolute; z-index: 9;">
+          <!--图片显示-->
+          <img id="pic" class="mdui-center mdui-img-fluid" style="margin-top: 10%;" src="images/upload-img.png">
+          <!--文件信息-->
+          <p id="pic-text" class="mdui-text-center" style="margin-bottom: 10%;">选择文件</p>
+        </div>
+        <!--识别按钮-->
+        <button id="analyze-btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"
+          onclick='
+            document.getElementById("result").style.display="none";
+            document.getElementById("analyzing").style.display="block";
+            document.getElementById("analyze-btn").setAttribute("disabled", true);
+          '>
+        识别
+        </button>
+      </div>
+      <!--分割线-->
+      <div class="mdui-row mdui-m-y-3">
+        <div class="mdui-divider"></div>
+      </div>
+      <!--“识别中”时显示的信息-->
+      <div id="analyzing" class="mdui-row" style="display: none;">
+        <h2 >识别中</h2>
         <div class="mdui-progress">
           <div class="mdui-progress-indeterminate"></div>
         </div>
+        <!--测试用按钮，模拟识别完成-->
+        <button id="test-show-result" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-m-y-1"
+          onclick='
+            document.getElementById("analyzing").style.display="none";
+            document.getElementById("result").style.display="block";
+            document.getElementById("result-name").innerHTML = "作品名：《星月夜The Starry Night》";
+            document.getElementById("result-author").innerHTML = "作者：梵高Vincent van Gogh";
+            document.getElementById("analyze-btn").removeAttribute("disabled");
+          '>
+          测试按钮-识别完成
+        </button>
       </div>
-      <p id="result-name"></p>
-      <p id="result-author"></p>
+      <!--显示识别结果-->
+      <div id="result" class="mdui-row" style="display: none;">
+        <h2 >识别结果</h2>
+        <p id="result-name"></p>
+        <p id="result-author"></p>
+      </div>
     </div>
-    
-    <button id="test-show-result" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" style="display: none;"
-    onclick='document.getElementById("result-name").innerHTML = "作品名：《星月夜The Starry Night》";
-             document.getElementById("result-author").innerHTML = "作者：梵高Vincent van Gogh";
-             document.getElementById("spinner").style.display="none";
-             document.getElementById("test-show-result").style.display="none";
-             document.getElementById("analyze-btn").removeAttribute("disabled");'>
-      测试按钮-识别完成
-    </button>
-  </div>
-
   </body>
 
   <div class="mdui-dialog" id="dialog-docs-theme">
@@ -384,11 +389,12 @@
     </div>
   </div>
 
+  <script>var $ = mdui.$;</script>
   <script src="//cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.polyfills.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/holderjs@2.9.7/holder.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.1/build/highlight.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"></script>
-  <script>var $ = mdui.$;</script>
   <script src="//cdn.w3cbus.com/mdui.org/docs/assets/docs/js/docs-v4.js"></script>
+  <script src="script.js" async></script>
 
 </html>
