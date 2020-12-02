@@ -13,11 +13,14 @@ import javax.servlet.http.HttpSession;
 import com.hpe.pojo.Users;
 import com.hpe.service.IUsersService;
 import com.hpe.service.impl.UsersServiceImpl;
+import com.jspsmart.upload.SmartFile;
+import com.jspsmart.upload.SmartUpload;
+import com.jspsmart.upload.SmartUploadException;
 
 /**
  * Servlet implementation class UsersServlet
  */
-@WebServlet("/UsersServlet")
+@WebServlet("/usersServlet")
 public class UsersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -46,7 +49,9 @@ public class UsersServlet extends HttpServlet {
 			logout(request, response);
 		} else if(action.equals("update")){
 			update(request, response);
-		} 
+		} else if(action.equals("updateImg")){
+			updateImg(request, response);
+		}
 	}
  
 	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -115,6 +120,43 @@ public class UsersServlet extends HttpServlet {
 					+ "window.location.href = '"+ request.getContextPath() +"/web/index.jsp';"
 					+ "</script>");
 		}
+	}
+	
+	protected void updateImg(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//获取用户名
+		String name= "admin";//request.getParameter("name");
+		PrintWriter out = response.getWriter();
+		//1.创建对象
+		SmartUpload smartUpload=new SmartUpload();
+		//2.执行上传初始化
+		smartUpload.initialize(this.getServletConfig(),request, response);
+		try {
+			//3.执行文件上传
+			smartUpload.upload();
+			//获取上传文件
+			SmartFile file = smartUpload.getFiles().getFile(0);
+			//获取文件名
+			String imgpath = "img/"+file.getFileName();
+			Users users = usersService.getUserByName(name);
+			users.setImgPath(imgpath);
+			int result=usersService.updateImage(users);
+			
+			if (result == 1) {
+				smartUpload.save("/img");
+				out.write("<script>"
+						+ "alert('保存成功');" 
+						+ "window.location.href='" + request.getContextPath()
+						+ "/menusServlet?action=all';"
+						+ "</script>");
+			} else {
+				out.write("<script>" + "alert('上传失败');" + "window.location.href='" + request.getContextPath()
+					+ "/menusServlet?action=findTypeAll';" + "</script>");
+			}
+		} catch (SmartUploadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 	}
 	
 	protected void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
