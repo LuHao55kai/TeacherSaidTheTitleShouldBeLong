@@ -27,4 +27,6 @@ public interface IUsersDao {
 	int register(Users user);
 	//注册
 
+	int updateImage(Users users);
+	//上传照片
 }
