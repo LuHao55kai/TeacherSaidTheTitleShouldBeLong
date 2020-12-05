@@ -23,5 +23,7 @@ public interface IUsersService {
 	Users getUserByName(String name);
 	
 	int register(Users user);
+	
+	int updateImage(Users users);
 
 }
