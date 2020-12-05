@@ -76,4 +76,17 @@ public class UsersDaoImpl implements IUsersDao {
 		return result;
 	}
 
+	public int updateImage(Users users) {
+		// TODO Auto-generated method stub
+		String sql = "update users set imgPath=? where name=?";
+		int result = 0;
+		Object[] param = {users.getImgPath(), users.getName()};
+		try {
+			result = dbutil.execute(sql, param);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
