@@ -21,8 +21,8 @@
       <div class="mdui-toolbar mdui-color-theme">
         <a href="./" class="mdui-typo-title">名画识别</a>
         <div class="mdui-toolbar-spacer"></div>
-        <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-dialog="{target: '#dialog-docs-theme'}" mdui-tooltip="{content: '设置主题'}"><i class="mdui-icon material-icons">color_lens</i></span>
-        <a href="https://github.com/LuHao55kai/Lu" target="_blank" class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: '查看 Github'}">
+        <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-dialog='{target: "#dialog-docs-theme"}' mdui-tooltip='{content: "设置主题"}'><i class="mdui-icon material-icons">color_lens</i></span>
+        <a href="https://github.com/LuHao55kai/Lu" target="_blank" class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip='{content: "查看 Github"}'>
           <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve" class="mdui-icon" style="width: 24px;height:24px;">
             <path fill-rule="evenodd" clip-rule="evenodd" fill="#ffffff" d="M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5
       c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1
@@ -35,7 +35,7 @@
         <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-dialog='{target: "#dialog-account"}' mdui-tooltip='{content: "账户"}'><i class="mdui-icon material-icons">account_circle</i></span>
       </div>
     </header>
-
+    
     <div class="mdui-container">
       <!--H1 网页大标题-->
       <h1 class="doc-title mdui-text-color-theme">名画识别网页小程序</h1>
@@ -47,17 +47,15 @@
         <!--上传图片窗口-->
         <div class="mdui-ripple">
           <!--上传--><!--此处要连接后端-->
-          <form method="post" enctype="multipart/form-data">
-            <input id="input-window" name="inputImg" type="file" accept="image/x-png,image/jpeg"
+          <form action="" enctype="multipart/form-data">
+            <input name="inputImg" type="file" accept="image/x-png,image/jpeg" onchange="uploadImage()"
               style="cursor:pointer; opacity:0; width: 100%; height: 100%; position: absolute; z-index: 9;">
           </form>
-          <!--图片显示--><!--此处要连接后端-->
+          <!--图片显示-->
           <img id="image" class="mdui-center mdui-img-fluid" style="margin-top: 10%;" src="images/upload-img.png">
-          <!--文件信息--><!--此处要连接后端-->
+          <!--文件信息-->
           <p id="image-text" class="mdui-text-center" style="margin-bottom: 10%;">选择文件</p>
         </div>
-        <!--测试上传成功-->
-        <button id="test-upload-true" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">测试按钮-上传成功</button>
         <!--识别按钮--><!--此处要连接后端-->
         <button id="analyze-btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">
         识别
@@ -73,10 +71,6 @@
         <div class="mdui-progress">
           <div class="mdui-progress-indeterminate"></div>
         </div>
-        <!--测试用按钮，模拟识别完成-->
-        <button id="test-show-result" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-m-y-1">
-          测试按钮-识别完成
-        </button>
       </div>
       <!--显示识别结果-->
       <div id="result" class="mdui-row" style="display: none;">
