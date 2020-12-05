@@ -19,7 +19,7 @@ function uploadImage() {
     }
   }
   // 这里为UsersServlet在服务器上的位置，action=updateImg
-  xmlhttp.open("GET", "/UsersServlet?action=updateImg", true);
+  xmlhttp.open("GET", "/usersServlet?action=updateImg", true);
   xmlhttp.send();
 }
 
@@ -53,7 +53,7 @@ function analyzingEvent() {
     }
   }
   // 这里为UsersServlet在服务器上的位置，action=analyze
-  xmlhttp.open("GET", "/UsersServlet?action=analyze", true);
+  xmlhttp.open("GET", "/usersServlet?action=analyze", true);
   xmlhttp.send();
 }
 
