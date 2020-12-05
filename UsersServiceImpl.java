@@ -47,5 +47,16 @@ private IUsersDao usersDao = new UsersDaoImpl();
 		}
 		return usersDao.register(user);
 	}
+	
+	public int updateImage(Users users) {
+		Users user=usersDao.getUserByName(users.getName());
+		if(user!=null && (users.getName().equals(user.getName())&&(users.getPwd()!=user.getPwd())))
+		{
+			return -1;
+		}else{
+			return usersDao.updateImage(users);
+		}
+	}
+
 
 }
