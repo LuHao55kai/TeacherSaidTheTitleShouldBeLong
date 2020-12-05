@@ -46,17 +46,19 @@
         <h2>上传图片</h2>
         <!--上传图片窗口-->
         <div class="mdui-ripple">
-          <!--上传-->
-          <input id="input-window" type="file" accept="image/x-png,image/jpeg" 
-            style="cursor:pointer; opacity:0; width: 100%; height: 100%; position: absolute; z-index: 9;">
-          <!--图片显示-->
+          <!--上传--><!--此处要连接后端-->
+          <form method="post" enctype="multipart/form-data">
+            <input id="input-window" name="inputImg" type="file" accept="image/x-png,image/jpeg"
+              style="cursor:pointer; opacity:0; width: 100%; height: 100%; position: absolute; z-index: 9;">
+          </form>
+          <!--图片显示--><!--此处要连接后端-->
           <img id="image" class="mdui-center mdui-img-fluid" style="margin-top: 10%;" src="images/upload-img.png">
-          <!--文件信息-->
+          <!--文件信息--><!--此处要连接后端-->
           <p id="image-text" class="mdui-text-center" style="margin-bottom: 10%;">选择文件</p>
         </div>
         <!--测试上传成功-->
         <button id="test-upload-true" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">测试按钮-上传成功</button>
-        <!--识别按钮-->
+        <!--识别按钮--><!--此处要连接后端-->
         <button id="analyze-btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">
         识别
         </button>
@@ -97,16 +99,20 @@
         <div class="mdui-textfield mdui-textfield-floating-label">
           <i class="mdui-icon material-icons">account_circle</i>
           <label class="mdui-textfield-label">用户名</label>
+          <!--此处要连接后端-->
           <input class="mdui-textfield-input" type="text" required/>
           <div class="mdui-textfield-error">用户名不能为空</div>
         </div>
         <div class="mdui-textfield mdui-textfield-floating-label">
           <i class="mdui-icon material-icons">lock</i>
           <label class="mdui-textfield-label">密码</label>
+          <!--此处要连接后端-->
           <input class="mdui-textfield-input" type="password" required/>
+          <div class="mdui-textfield-error">请输入密码</div>
         </div>
         <div class="mdui-dialog-actions">
           <button class="mdui-btn mdui-ripple" mdui-dialog-close>取消</button>
+          <!--此处要连接后端-->
           <button class="mdui-btn mdui-ripple" mdui-dialog-confirm>登录</button>
         </div>
       </div>
@@ -118,6 +124,7 @@
         <div class="mdui-textfield mdui-textfield-floating-label">
           <i class="mdui-icon material-icons">account_circle</i>
           <label class="mdui-textfield-label">用户名</label>
+          <!--此处要连接后端-->
           <input class="mdui-textfield-input" type="text" required/>
           <div class="mdui-textfield-error">用户名不能为空</div>
         </div>
@@ -125,12 +132,14 @@
         <div class="mdui-textfield mdui-textfield-floating-label">
           <i class="mdui-icon material-icons">lock</i>
           <label class="mdui-textfield-label">密码</label>
+          <!--此处要连接后端-->
           <input class="mdui-textfield-input" type="password" pattern="^.*(?=.{6,})(?=.*[a-z])(?=.*[A-Z]).*$" required/>
           <div class="mdui-textfield-error">密码至少 6 位，且包含大小写字母</div>
           <div class="mdui-textfield-helper">请输入至少 6 位，且包含大小写字母的密码</div>
         </div>
         <div class="mdui-dialog-actions">
           <button class="mdui-btn mdui-ripple" mdui-dialog-close>取消</button>
+          <!--此处要连接后端-->
           <button class="mdui-btn mdui-ripple" mdui-dialog-confirm>注册</button>
         </div>
       </div>

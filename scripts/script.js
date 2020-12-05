@@ -7,8 +7,10 @@ document.getElementById('test-upload-true').addEventListener('click', changeImag
 
 // 更改图片
 function changeImage() {
+  /*此处要连接后端*/
   image.src = 'images/the-starry-night.jpg';    // image.src改为用户上传的图片的位置
   image.style.marginTop = 0;
+  /*此处要连接后端*/
   imageText.textContent = 'the-starry-night.jpg'; // imageText.textContent为用户上传的图片的名称
   imageText.style.marginBottom = 0;
 }
@@ -29,7 +31,9 @@ function analyzingEvent() {
 analyzeButton.addEventListener('click', analyzingEvent);
 
 function showResult() {
+  /*此处要连接后端*/
   resultName.textContent = '作品名：《星月夜The Starry Night》';  // result-name改为识别的作品名
+  /*此处要连接后端*/
   resultAuthor.textContent = '作者：梵高Vincent van Gogh';  // result-name改为对应的作者
 
   analyzing.style.display = 'none';
